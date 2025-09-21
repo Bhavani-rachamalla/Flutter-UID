@@ -1,0 +1,76 @@
+import &#39;package:flutter/material.dart&#39;;
+void main() {
+runApp(StateDemoApp());
+}
+class StateDemoApp extends StatelessWidget {
+@override
+Widget build(BuildContext context) {
+return MaterialApp(
+title: &#39;Stateful &amp; Stateless Demo&#39;,
+home: Scaffold(
+appBar: AppBar(
+title: Text(&#39;Stateful &amp; Stateless Widgets&#39;),
+),
+body: Column(
+mainAxisAlignment: MainAxisAlignment.center,
+children: [
+// Stateless widget example
+MyStatelessWidget(),
+SizedBox(height: 40),
+// Stateful widget example
+MyStatefulWidget(),
+],
+),
+),
+);
+}
+}
+// Stateless widget: does NOT hold state
+class MyStatelessWidget extends StatelessWidget {
+@override
+Widget build(BuildContext context) {
+return Center(
+child: Text(
+&#39;I am a Stateless Widget&#39;,
+style: TextStyle(fontSize: 24, color: Colors.blue),
+),
+);
+}
+}
+// Stateful widget: holds state (counter in this example)
+class MyStatefulWidget extends StatefulWidget {
+
+@override
+_MyStatefulWidgetState createState() =&gt; _MyStatefulWidgetState();
+}
+class _MyStatefulWidgetState extends State&lt;MyStatefulWidget&gt; {
+int _counter = 0;
+void _incrementCounter() {
+setState(() {
+_counter++; // updates the state
+});
+}
+@override
+Widget build(BuildContext context) {
+return Center(
+child: Column(
+children: [
+Text(
+&#39;I am a Stateful Widget&#39;,
+style: TextStyle(fontSize: 24, color: Colors.green),
+),
+SizedBox(height: 16),
+Text(
+&#39;Counter: $_counter&#39;,
+style: TextStyle(fontSize: 20),
+),
+SizedBox(height: 16),
+ElevatedButton(
+onPressed: _incrementCounter,
+child: Text(&#39;Increment Counter&#39;),
+),
+],
+),
+);
+}
+}
